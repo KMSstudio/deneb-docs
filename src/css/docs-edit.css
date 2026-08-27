@@ -27,10 +27,17 @@
 }
 
 .docs-edit__render {
-  padding: 0 12px;
-  border-left: 0;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.docs-edit__render svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex-shrink: 0;
 }
 
 .docs-edit__select:hover,
