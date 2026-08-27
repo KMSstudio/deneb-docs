@@ -1,10 +1,13 @@
+// @/api/docs/route.ts
+
 import { NextResponse } from "next/server";
+import { saveDocs } from "@/feat/docs/docs.service";
 
-import { createDocs } from "@/feat/docs/docs.service";
+type RequestBody = { slug?: unknown; content?: unknown };
 
-type RequestBody = { slug?: unknown; content?: unknown; };
-export async function POST( request: Request ) {
+export async function POST(request: Request) {
   let body: RequestBody;
+
   try { body = await request.json(); }
   catch {
     return NextResponse.json(
@@ -13,24 +16,20 @@ export async function POST( request: Request ) {
     );
   }
 
-  if (typeof body.slug !== "string" || typeof body.content !== "string" ) {
+  if (typeof body.slug !== "string" || typeof body.content !== "string") {
     return NextResponse.json(
       { error: "slug and content must be strings" },
-      { status: 400, }
+      { status: 400 },
     );
   }
 
   try {
-    const document =
-      await createDocs(body.slug, body.content);
-    return NextResponse.json(
-      document,
-      { status: 201, }
-    );
+    const { docs, created } = await saveDocs(body.slug, body.content);
+    return NextResponse.json(docs, { status: created ? 201 : 200 });
   } catch (error) {
-    console.error("Failed to create document:", error );
+    console.error("Failed to save docs:", error);
     return NextResponse.json(
-      { error: "Failed to create document" },
+      { error: "Failed to save docs" },
       { status: 500 },
     );
   }
