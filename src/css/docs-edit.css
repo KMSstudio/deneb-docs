@@ -1,0 +1,110 @@
+/* @/css/docs-edit.css */
+
+.docs-edit {
+  width: 100%;
+}
+
+.docs-edit__tools {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.docs-edit__select,
+.docs-edit__render {
+  height: 36px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  font-size: .9rem;
+}
+
+.docs-edit__select {
+  padding: 0 10px;
+  border-radius: 4px 0 0 4px;
+}
+
+.docs-edit__render {
+  padding: 0 12px;
+  border-left: 0;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.docs-edit__select:hover,
+.docs-edit__render:hover {
+  background: #f5f5f5;
+}
+
+.docs-edit__main {
+  height: 560px;
+  overflow: hidden;
+}
+
+.docs-edit__preview {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.docs-edit__preview::-webkit-scrollbar {
+  display: none;
+}
+
+.docs-edit__editor {
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: 0;
+  resize: none;
+  overflow-y: auto;
+  scrollbar-width: none;
+  font: inherit;
+  line-height: 1.6;
+}
+
+.docs-edit__editor::-webkit-scrollbar {
+  display: none;
+}
+
+.docs-edit__submit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.docs-edit__notice {
+  max-width: 720px;
+  margin: 0;
+  color: #666;
+  font-size: .875rem;
+  line-height: 1.5;
+}
+
+.docs-edit__submit-btn {
+  min-width: 88px;
+  height: 38px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.docs-edit__submit-btn:hover {
+  background: #f5f5f5;
+}
+
+.docs-edit__submit-btn:disabled {
+  background: #aaa;
+  color: #eee;
+  cursor: default;
+}

@@ -108,14 +108,3 @@
 .docs-head__updated time {
   color: inherit;
 }
-
-@media (max-width: 720px) {
-  /* .docs-head {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .docs-head__tools {
-    justify-content: flex-end;
-  } */
-}

@@ -2,8 +2,11 @@
 
 import "server-only";
 import { supabase } from "@/lib/supabase";
+import type { Document } from "@/types/docs.type";
 
-export async function findDocsBySlug(slug: string) {
+export async function findDocsBySlug(
+  slug: string
+): Promise<Document | null> {
   const { data, error } = await supabase
     .from("documents")
     .select("*")
@@ -18,7 +21,7 @@ export async function insertDocs(
   slug: string,
   content: string,
   creatorId: string,
-) {
+): Promise<Document> {
   const { data, error } = await supabase
     .from("documents")
     .insert({
@@ -38,7 +41,7 @@ export async function updateDocs(
   slug: string,
   content: string,
   updaterId: string,
-) {
+): Promise<Document | null> {
   const { data, error } = await supabase
     .from("documents")
     .update({
