@@ -1,0 +1,121 @@
+/* @/css/docs.css */
+
+.docs {
+  width: 100%;
+  container-type: inline-size;
+}
+
+.docs-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.docs-head__info {
+  min-width: 320px;
+  flex: 1 1 320px;
+}
+
+.docs-head__title {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.25;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.docs-head__updated {
+  margin-top: 8px;
+  color: #777;
+  font-size: .85rem;
+}
+
+.docs-head__tools {
+  flex: 0 0 auto;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.docs-head__group {
+  display: flex;
+}
+
+.docs-head__action,
+.docs-head__more {
+  height: 36px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  font-size: .9rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.docs-head__action {
+  padding: 0 12px;
+  border-right: 0;
+}
+
+.docs-head__action:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.docs-head__action:last-child {
+  border-right: 1px solid #ccc;
+  border-radius: 0 4px 4px 0;
+}
+
+.docs-head__action--icon {
+  width: 38px;
+  padding: 0;
+}
+
+.docs-head__more {
+  width: 38px;
+  padding: 0;
+  border-radius: 4px;
+}
+
+.docs-head__action:hover,
+.docs-head__more:hover {
+  background: #f5f5f5;
+}
+
+.docs-head__action:focus-visible,
+.docs-head__more:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.docs-head__action svg,
+.docs-head__more svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.docs-head__updated time {
+  color: inherit;
+}
+
+@media (max-width: 720px) {
+  /* .docs-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .docs-head__tools {
+    justify-content: flex-end;
+  } */
+}
