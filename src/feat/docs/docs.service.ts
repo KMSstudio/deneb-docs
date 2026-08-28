@@ -6,6 +6,7 @@ import {
   insertDocs,
   updateDocs,
 } from "./docs.repository";
+import { insertAct } from "@/feat/act/act.repository";
 
 const ACTOR_ID = process.env.POC_ACTOR_ID || "";
 if (!ACTOR_ID) { throw new Error("POC_ACTOR_ID is not defined"); }
@@ -28,26 +29,36 @@ export async function getDocsBySlug(slug: string) {
 export async function createDocs(slug: string, content: string) {
   const docs = prepareDocs(slug, content);
   if (await findDocsBySlug(docs.slug)) { throw new Error("Docs already exists"); }
-  return insertDocs(docs.slug, docs.content, ACTOR_ID);
+  const created = await insertDocs(docs.slug, docs.content, ACTOR_ID);
+  await insertAct(created.id, ACTOR_ID, created.content);
+  return created;
 }
 
 export async function updateDocsBySlug(slug: string, content: string) {
   const docs = prepareDocs(slug, content);
-  if (!await findDocsBySlug(docs.slug)) { throw new Error("Docs not found"); }
+  const exists = await findDocsBySlug(docs.slug);
+  if (!exists) { throw new Error("Docs not found"); }
+  if (exists.content === docs.content) { return exists; }
+
   const updated = await updateDocs(docs.slug, docs.content, ACTOR_ID);
   if (!updated) { throw new Error("Docs not found"); }
+  await insertAct(updated.id, ACTOR_ID, updated.content);
   return updated;
 }
 
 export async function saveDocs(slug: string, content: string) {
   const docs = prepareDocs(slug, content);
   const exists = await findDocsBySlug(docs.slug);
+
   if (exists) {
+    if (exists.content === docs.content) { return { docs: exists, created: false }; }
     const updated = await updateDocs(docs.slug, docs.content, ACTOR_ID);
     if (!updated) { throw new Error("Docs not found"); }
+    await insertAct(updated.id, ACTOR_ID, updated.content);
     return { docs: updated, created: false };
   } else {
     const created = await insertDocs(docs.slug, docs.content, ACTOR_ID);
+    await insertAct(created.id, ACTOR_ID, created.content);
     return { docs: created, created: true };
   }
 }

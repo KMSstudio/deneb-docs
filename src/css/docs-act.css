@@ -1,0 +1,103 @@
+.docs-act {
+  width: min(900px, calc(100% - 40px));
+  margin: 48px auto;
+}
+
+.docs-act__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.docs-act__title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.docs-act__description {
+  margin: 6px 0 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.docs-act__count {
+  color: #777;
+  font-size: 13px;
+}
+
+.docs-act__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.docs-act__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 4px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.docs-act__item-main {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 14px;
+}
+
+.docs-act__version {
+  min-width: 48px;
+  font-weight: 600;
+}
+
+.docs-act__user,
+.docs-act__date {
+  overflow: hidden;
+  color: #777;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.docs-act__diff {
+  display: flex;
+  flex-shrink: 0;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.docs-act__addition {
+  color: #1a7f37;
+}
+
+.docs-act__deletion {
+  color: #cf222e;
+}
+
+.docs-act__empty {
+  padding: 48px 0;
+  color: #777;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .docs-act {
+    width: calc(100% - 28px);
+    margin: 32px auto;
+  }
+
+  .docs-act__item-main {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .docs-act__user {
+    max-width: 220px;
+  }
+}
